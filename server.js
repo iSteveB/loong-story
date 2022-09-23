@@ -2,11 +2,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
+const path = require('path');
 
 require('dotenv').config({ path: './config/.env' });
 require('./config/db');
 
-const {checkUser, requireAuth} = require('./middlewares/auth.middleware')
+const { checkUser, requireAuth } = require('./middlewares/auth.middleware');
 
 const app = express();
 
@@ -17,12 +18,13 @@ app.use(cookieParser());
 //Middleware jwt
 app.get('*', checkUser);
 app.get('/jwtid', requireAuth, (req, res) => {
-    res.status(200).send(res.locals.user._id)
-})
+    res.status(200).send(res.locals.user._id);
+});
 
 //Routes
 app.use('/api/user', userRoutes);
-app.use('/api/post', postRoutes)
+app.use('/api/post', postRoutes);
+app.use('/uploads/profils', express.static(path.join(__dirname, 'uploads/profils')));
 
 //Server
 app.listen(process.env.PORT, () => {
