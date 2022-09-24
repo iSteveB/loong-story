@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, `${__dirname}/../client/public/uploads/profil/`);
     },
-    filename: async (req, file, callback) => {
+    filename: (req, file, callback) => {
         
         const name = file.originalname.toLowerCase().split('.')[0].replace(/\s/g, "_");
         const extension = MIME_TYPES[file.mimetype];

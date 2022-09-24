@@ -1,7 +1,23 @@
-const postModel = require('../models/post.model');
 const PostModel = require('../models/post.model');
 const UserModel = require('../models/user.model');
 const ObjectID = require('mongoose').Types.ObjectId;
+
+const makeFileName = (req)=> {
+
+    const MIME_TYPES = {        
+        'image/jpg': 'jpg',
+        'image/jpeg': 'jpg',
+        'image/png': 'jpg',
+    };
+
+    const name = req.file.originalname.toLowerCase().split('.')[0].replace(/\s/g, "_");
+    const extension = MIME_TYPES[req.file.mimetype];
+
+    const fileName = name + Math.floor(Date.now() / 1000) + '.' + extension;
+
+    return fileName;
+
+}
 
 module.exports.readPost = (req, res) => {
     PostModel.find((err, docs) => {
@@ -11,9 +27,11 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-    const newPost = postModel({
+
+    const newPost = PostModel({
         posterID: req.body.posterID,
         message: req.body.message,
+        picture: req.file ? `./uploads/profil/${makeFileName(req)}` : "",
         video: req.body.video,
         likers: [],
         comments: [],

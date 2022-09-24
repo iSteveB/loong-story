@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 const path = require('path');
+const cors = require('cors');
 
 require('dotenv').config({ path: './config/.env' });
 require('./config/db');
@@ -10,6 +11,16 @@ require('./config/db');
 const { checkUser, requireAuth } = require('./middlewares/auth.middleware');
 
 const app = express();
+
+const corsOptions = {
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    allowedHeaders: ['sessionId', 'Content-Type'],
+    exposedHeaders: ['sessionId'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,7 +35,10 @@ app.get('/jwtid', requireAuth, (req, res) => {
 //Routes
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-app.use('/uploads/profils', express.static(path.join(__dirname, 'uploads/profils')));
+app.use(
+    '/uploads/profils',
+    express.static(path.join(__dirname, 'uploads/profils'))
+);
 
 //Server
 app.listen(process.env.PORT, () => {
