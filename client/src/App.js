@@ -1,11 +1,11 @@
-import Routes from './components/Routes';
+
 
 const App = () => {
-    return (
-        <div>
-            <Routes/>
-        </div>
-    );
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default App;
