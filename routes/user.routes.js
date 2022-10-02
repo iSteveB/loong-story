@@ -7,8 +7,8 @@ const uploadMiddelware = require('../middlewares/avatarUpload.middleware')
 
 // Auth
 router.post('/register', authController.signUp);
-router.post('/login', authController.signIn);
-router.get('/logout', authController.logout);
+router.post('/login', authController.logIn);
+router.get('/logout', authController.logOut);
 
 // User DB
 router.get('/', userController.getAllUsers);
