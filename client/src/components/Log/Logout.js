@@ -1,7 +1,11 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { deleteUserId } from '../../feature/userIdSlices';
 
 const Logout = () => {
+    const dispatch = useDispatch();
+
     const removeCookie = (key) => {
         if (window !== undefined) {
             cookie.remove(key, { expires: 1 });
@@ -14,10 +18,10 @@ const Logout = () => {
             url: `${process.env.REACT_APP_API_URL}api/user/logout`,
             withCredentials: true,
         })
-            .then(() => removeCookie('jwt'))
+            .then(() => removeCookie('jwt'), dispatch(deleteUserId()))
             .catch((error) => console.log(error));
-        
-        window.location = '/'
+
+        window.location = '/';
     };
 
     return (

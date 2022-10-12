@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
-import Router from './components/Routes';
+import { useEffect } from 'react';
 import { UserIdContext } from './Context/AppContext';
+import Router from './components/Routes';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserId } from './feature/userIdSlices';
 
 const App = () => {
-    const [userId, setUserId] = useState(null);
+    const dispatch = useDispatch();
+    const userId = useSelector((state) => state.userId.userId);
 
     useEffect(() => {
-        const fetchToken = async () => {
-            await axios.get(`${process.env.REACT_APP_API_URL}jwtid`, {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}jwtid`, {
                 withCredentials: true,
             })
-            .then(res =>setUserId(res.data))
-            .catch(err => console.log('No token found : ' + err))
-        };
-        fetchToken();
-    }, [userId]);
+            .then((res) => dispatch(getUserId(res.data)))
+            .catch((error) => console.log('No token found : ' + error));
+    }, [dispatch]);
 
     return (
         <UserIdContext.Provider value={userId}>
