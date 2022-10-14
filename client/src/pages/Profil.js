@@ -1,9 +1,8 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import Log from '../components/Log';
-import { UserIdContext } from '../Context/AppContext';
 
 const Profil = () => {
-    const userId = useContext(UserIdContext);
+    const userId = useSelector(state => state.userId.userId);
 
     return (
         <div className='profil-page'>

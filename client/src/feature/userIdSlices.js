@@ -1,19 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-export const usersSlices = createSlice({
-    name : 'userId',
+export const userIdSlices = createSlice({
+    name: 'userId',
     initialState: {
-        userId: null
+        userId: null,
     },
     reducers: {
-        getUserId: (state, {payload}) => {
-            state.userId = payload
+        getUserId: (state, { payload }) => {
+            state.userId = payload;
         },
-        deleteUserId: (state, {payload})=>{ 
-            state.userId = state.userId.filter(userId => userId.id !== payload)
-        }
-    }
+        deleteUserId: (state, { payload }) => {
+            state.userId = null
+            console.log(state.userId)
+        },
+    },
 });
 
-export const { getUserId, deleteUserId } = usersSlices.actions;
-export default usersSlices.reducer;
+export const { getUserId, deleteUserId } = userIdSlices.actions;
+export default userIdSlices.reducer;

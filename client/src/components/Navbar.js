@@ -1,16 +1,15 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { UserIdContext } from '../Context/AppContext';
 import Logout from './Log/Logout';
 
 const Navbar = () => {
-    const userId = useContext(UserIdContext);
+    const userId = useSelector(state => state.userId.userId);
 
     return (
         <nav>
             <div className='nav-container'>
                 <div className='logo'>
-                    <NavLink exact to='/'>
+                    <NavLink to='/'>
                         <div className='logo'>
                             <img src='./img/icon.png' alt='icon' />
                             <h3>Loong Story</h3>
@@ -21,7 +20,7 @@ const Navbar = () => {
                     <ul>
                         <li></li>
                         <li className='welcome'>
-                            <NavLink exact to='/profil'>
+                            <NavLink to='/profil'>
                                 <h5>Bienvenue SteveLine</h5>
                             </NavLink>
                         </li>
@@ -31,7 +30,7 @@ const Navbar = () => {
                     <ul>
                         <li></li>
                         <li>
-                            <NavLink exact to='/profil'>
+                            <NavLink to='/profil'>
                                 <img src='./img/icons/login.svg' alt='login' />
                             </NavLink>
                         </li>
