@@ -4,6 +4,9 @@ import Logout from './Log/Logout';
 
 const Navbar = () => {
     const userId = useSelector(state => state.userId.userId);
+    const userPseudo = useSelector(state => {
+        if(state.user.user !== null) return state.user.user.pseudo
+    })
 
     return (
         <nav>
@@ -21,7 +24,7 @@ const Navbar = () => {
                         <li></li>
                         <li className='welcome'>
                             <NavLink to='/profil'>
-                                <h5>Bienvenue SteveLine</h5>
+                                <h5>Bienvenue {userPseudo}</h5>
                             </NavLink>
                         </li>
                         <Logout />
