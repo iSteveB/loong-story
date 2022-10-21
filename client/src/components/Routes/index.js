@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Profil from '../../pages/Profil';
 import Trending from '../../pages/Trending';
-import Navbar from '../Navbar';
+import Navbar from '../Navigation/Navbar';
 
 const Router = () => {
     return (

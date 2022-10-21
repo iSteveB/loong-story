@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import Log from '../components/Log';
+import UpdateProfil from '../components/Profil/UpdateProfil'
 
 const Profil = () => {
     const userId = useSelector(state => state.userId.userId);
@@ -7,7 +8,7 @@ const Profil = () => {
     return (
         <div className='profil-page'>
             {userId ? (
-                <h1>UPDATE PAGE</h1>
+                <UpdateProfil/>
             ) : (
                 <div className='log-container'>
                     <Log logIn={false} signUp={true} />

@@ -36,8 +36,8 @@ app.get('/jwtid', requireAuth, (req, res) => {
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 app.use(
-    '/uploads/profils',
-    express.static(path.join(__dirname, 'uploads/profils'))
+    '/uploads/profil',
+    express.static(path.join(__dirname, 'uploads/profil'))
 );
 
 //Server

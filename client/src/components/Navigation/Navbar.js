@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Logout from './Log/Logout';
+import Logout from '../Log/Logout';
 
 const Navbar = () => {
     const userId = useSelector(state => state.userId.userId);

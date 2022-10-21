@@ -1,11 +1,11 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteUserId } from '../../feature/userIdSlices';
+import { deleteUserId } from '../../features/userIdSlices';
 
 const Logout = () => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.userId.userId)
+    const userId = useSelector((state) => state.userId.userId);
 
     const removeCookie = (key) => {
         if (window !== undefined) {
