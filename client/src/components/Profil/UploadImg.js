@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPicture } from '../../features/picturesSlices';
 
 const UploadImg = (e) => {
     const [file, setFile] = useState();
     const dispatch = useDispatch();
+    const formRef = useRef();
     const userData = useSelector((state) => state.user.user);
 
     const handlePicture = (e) => {
@@ -21,17 +22,21 @@ const UploadImg = (e) => {
             .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
             .then(() => {
                 axios
-                    .get(
-                        `${process.env.REACT_APP_API_URL}api/user/${userData._id}`
-                    )
-                    .then((res) => dispatch(uploadPicture(res.data.pictures)))
+                    .get(`${process.env.REACT_APP_API_URL}api/user/${userData._id}`)
+                    .then((res) => dispatch(uploadPicture(res.data.picture)))
                     .catch((error) => console.log(error));
+                formRef.current.reset();
             })
             .catch((error) => console.log(error));
     };
 
     return (
-        <form action='' onSubmit={handlePicture} className='upload-pic' encType="multipart/form-data">
+        <form
+            action=''
+            onSubmit={handlePicture}
+            className='upload-pic'
+            encType='multipart/form-data'
+            ref={formRef}>
             <label htmlFor='file'>Changer d'image</label>
             <input
                 type='file'

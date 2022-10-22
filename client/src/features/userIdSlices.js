@@ -11,7 +11,6 @@ export const userIdSlices = createSlice({
         },
         deleteUserId: (state, { payload }) => {
             state.userId = null
-            console.log(state.userId)
         },
     },
 });

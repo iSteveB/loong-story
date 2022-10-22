@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const picturesSlices = createSlice({
-    name: 'pictures',
+    name: 'picture',
     initialState: {
-        pictures: null,
+        picture: null,
     },
     reducers: {
         uploadPicture: (state, { payload }) => {
-            state.pictures.push(payload);
+            state.picture = payload;
         },
     },
 });
