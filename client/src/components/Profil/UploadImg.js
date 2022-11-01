@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadPicture } from '../../features/picturesSlices';
+import { uploadPicture } from '../../features/userSlices';
 
 const UploadImg = (e) => {
     const [file, setFile] = useState();
@@ -23,7 +23,7 @@ const UploadImg = (e) => {
             .then(() => {
                 axios
                     .get(`${process.env.REACT_APP_API_URL}api/user/${userData._id}`)
-                    .then((res) => dispatch(uploadPicture(res.data.picture)))
+                    .then((res) => {dispatch(uploadPicture(res.data.picture)); console.log(res.data.picture)})
                     .catch((error) => console.log(error));
                 formRef.current.reset();
             })

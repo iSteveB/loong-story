@@ -9,8 +9,11 @@ export const userSlices = createSlice({
         getUser: (state, { payload }) => {
             state.user = payload;
         },
+        uploadPicture: (state, { payload }) => {
+            state.user.picture = payload;
+        }
     },
 });
 
-export const { getUser } = userSlices.actions;
+export const { getUser, uploadPicture } = userSlices.actions;
 export default userSlices.reducer;

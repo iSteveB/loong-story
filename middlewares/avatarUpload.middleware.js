@@ -1,6 +1,6 @@
 const multer = require('multer');
 
-const MIME_TYPES = {        
+const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
     'image/png': 'jpg',
@@ -13,8 +13,10 @@ const storage = multer.diskStorage({
         callback(null, `${__dirname}/../client/public/uploads/profil/`);
     },
     filename: (req, file, callback) => {
-        
-        const name = file.originalname.toLowerCase().split('.')[0].replace(/\s/g, "_");
+        const name = file.originalname
+            .toLowerCase()
+            .split('.')[0]
+            .replace(/\s/g, '_');
         const extension = MIME_TYPES[file.mimetype];
 
         callback(null, name + Math.floor(Date.now() / 1000) + '.' + extension);
@@ -39,5 +41,5 @@ module.exports = multer({
             );
         }
     },
-    limits: { fileSize: maxSize }
+    limits: { fileSize: maxSize },
 }).single('profilPicture');
