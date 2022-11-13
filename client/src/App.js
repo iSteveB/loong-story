@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserId } from './features/userIdSlices';
 import { getUser } from './features/userSlices';
+import { getUsers } from './features/usersSlices';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,11 @@ const App = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
+            await  axios
+            .get(`${process.env.REACT_APP_API_URL}api/user/`)
+            .then((res) => dispatch(getUsers(res.data)))
+            .catch((error) => console.log(error));
+
             await axios
                 .get(`${process.env.REACT_APP_API_URL}jwtid`, {
                     withCredentials: true,
@@ -20,12 +26,12 @@ const App = () => {
                 })
                 .catch((error) => console.log('No token found : ' + error));
 
-                if (userId) {
-                    axios
-                        .get(`${process.env.REACT_APP_API_URL}api/user/${userId}`)
-                        .then((res) => dispatch(getUser(res.data)))
-                        .catch((error) => console.log(error + userId));
-                }
+            if (userId) {
+                axios
+                    .get(`${process.env.REACT_APP_API_URL}api/user/${userId}`)
+                    .then((res) => dispatch(getUser(res.data)))
+                    .catch((error) => console.log(error + userId));
+            }
         };
         fetchUserData();
     }, [dispatch, userId]);

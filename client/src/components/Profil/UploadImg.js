@@ -22,8 +22,10 @@ const UploadImg = (e) => {
             .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
             .then(() => {
                 axios
-                    .get(`${process.env.REACT_APP_API_URL}api/user/${userData._id}`)
-                    .then((res) => {dispatch(uploadPicture(res.data.picture)); console.log(res.data.picture)})
+                    .get(
+                        `${process.env.REACT_APP_API_URL}api/user/${userData._id}`
+                    )
+                    .then((res) => dispatch(uploadPicture(res.data.picture)))
                     .catch((error) => console.log(error));
                 formRef.current.reset();
             })

@@ -1,4 +1,5 @@
 const UserModel = require('../models/user.model');
+const fs = require('fs');
 
 const makeFileName = (req) => {
     const MIME_TYPES = {
@@ -17,6 +18,7 @@ const makeFileName = (req) => {
 
     return fileName;
 };
+
 
 module.exports.uploadAvatar = async (req, res) => {
     try {

@@ -19,15 +19,9 @@ const makeFileName = (req)=> {
 
 }
 
-module.exports.readPost = (req, res) => {
-    PostModel.find((err, docs) => {
-        if (!err) res.send(docs);
-        else console.log('Error to get data : ' + err);
-    }).sort({ createdAt: -1 });
-};
 
 module.exports.createPost = async (req, res) => {
-
+    
     const newPost = PostModel({
         posterID: req.body.posterID,
         message: req.body.message,
@@ -36,13 +30,20 @@ module.exports.createPost = async (req, res) => {
         likers: [],
         comments: [],
     });
-
+    
     try {
         const post = await newPost.save();
         return res.status(201).json(post);
     } catch (err) {
         return res.status(400).send(err);
     }
+};
+
+module.exports.readPost = (req, res) => {
+    PostModel.find((err, docs) => {
+        if (!err) res.send(docs);
+        else console.log('Error to get data : ' + err);
+    }).sort({ createdAt: -1 });
 };
 
 module.exports.updatePost = (req, res) => {

@@ -13,7 +13,7 @@ module.exports.signUpErrors = (err) => {
         errors.pseudo = 'Ce pseudo est déjà enregistré !';
 
     if (err.code === 11000 && Object.keys(err.keyValue)[0].includes('email'))
-        errors.mail = 'Cet email est déjà enregistré !';
+        errors.email = 'Cet email est déjà enregistré !';
 
     return errors;
 };
