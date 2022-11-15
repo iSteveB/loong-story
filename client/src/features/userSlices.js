@@ -14,9 +14,15 @@ export const userSlices = createSlice({
         },
         updateBio: (state, { payload }) => {
             state.user.bio = payload
+        },
+        followUser: (state, {payload}) => {
+            state.user.following.push(payload)
+        },
+        unfollowUser: (state, {payload}) => {
+            state.user.following = state.user.following.filter(id => id !== payload) 
         }
     },
 });
 
-export const { getUser, uploadPicture, updateBio } = userSlices.actions;
+export const { getUser, uploadPicture, updateBio, followUser, unfollowUser } = userSlices.actions;
 export default userSlices.reducer;

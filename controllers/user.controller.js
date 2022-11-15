@@ -53,7 +53,7 @@ module.exports.deleteUser = async (req, res) => {
 module.exports.follow = async (req, res) => {
     if (
         !ObjectID.isValid(req.params.id) ||
-        !ObjectID.isValid(req.body.idToFollow)
+        !ObjectID.isValid(req.body.followId)
     )
         return res.status(400).send('ID unknow : ' + req.params.id);
 
@@ -61,7 +61,7 @@ module.exports.follow = async (req, res) => {
         // add to the follower list
         await UserModel.findByIdAndUpdate(
             req.params.id,
-            { $addToSet: { following: req.body.idToFollow } },
+            { $addToSet: { following: req.body.followId } },
             { new: true, upsert: true }
         )
             .then((docs) => res.status(201).send(docs))
@@ -69,7 +69,7 @@ module.exports.follow = async (req, res) => {
 
         //add to following list
         await UserModel.findByIdAndUpdate(
-            req.body.idToFollow,
+            req.body.followId,
             { $addToSet: { followers: req.params.id } },
             { new: true, upsert: true }
         ).catch((err) => res.status(400).json(err));
@@ -81,7 +81,7 @@ module.exports.follow = async (req, res) => {
 module.exports.unfollow = async (req, res) => {
     if (
         !ObjectID.isValid(req.params.id) ||
-        !ObjectID.isValid(req.body.idToUnfollow)
+        !ObjectID.isValid(req.body.followId)
     )
         return res.status(400).send('ID unknow : ' + req.params.id);
 
@@ -89,7 +89,7 @@ module.exports.unfollow = async (req, res) => {
         // delete from the follower list
         await UserModel.findByIdAndUpdate(
             req.params.id,
-            { $pull: { following: req.body.idToUnfollow } },
+            { $pull: { following: req.body.followId } },
             { new: true, upsert: true }
         )
             .then((docs) => res.status(201).send(docs))
@@ -97,7 +97,7 @@ module.exports.unfollow = async (req, res) => {
 
         //delete from following list
         await UserModel.findByIdAndUpdate(
-            req.body.idToUnfollow,
+            req.body.followId,
             { $pull: { followers: req.params.id } },
             { new: true, upsert: true }
         ).catch((err) => res.status(400).json(err));

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBio } from '../../features/userSlices';
 import LeftNav from '../Navigation/LeftNav';
@@ -106,7 +106,11 @@ const UpdateProfil = () => {
                                                     alt='profil'
                                                 />
                                                 <h4>{user.pseudo}</h4>
-                                                <FollowHandler />
+                                                <div className='follow-handler'>
+                                                    <FollowHandler
+                                                        followId={user._id}
+                                                    />
+                                                </div>
                                             </li>
                                         );
                                     }
@@ -143,7 +147,7 @@ const UpdateProfil = () => {
 
                                                 <div className='follow-handler'>
                                                     <FollowHandler
-                                                        idToFollow={user._id}
+                                                        followId={user._id}
                                                     />
                                                 </div>
                                             </li>

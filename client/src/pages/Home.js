@@ -1,9 +1,8 @@
-import React from 'react';
-
+import LeftNav from '../components/Navigation/LeftNav';
 const Home = () => {
     return (
-        <div>
-            Home Sweet Home
+        <div className='home'>
+            <LeftNav />
         </div>
     );
 };
