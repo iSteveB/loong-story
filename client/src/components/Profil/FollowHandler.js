@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { followUser, unfollowUser } from '../../features/userSlices';
 
-const FollowHandler = ({ followId }) => {
+const FollowHandler = ({ followId, type }) => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.user.user);
     const [isFollowed, setIsFollowed] = useState(false);
@@ -44,11 +44,21 @@ const FollowHandler = ({ followId }) => {
         <>
             {isFollowed ? (
                 <span onClick={handleUnfollow}>
-                    <button className='unfollow-btn'>Abonné</button>
+                    {type === 'suggestion' && (
+                        <button className='unfollow-btn'>Abonné</button>
+                    )}
+                    {type === 'card' && (
+                        <img src='./img/icons/checked.svg' alt='checked' />
+                    )}
                 </span>
             ) : (
                 <span onClick={handleFollow}>
-                    <button className='follow-btn'>Suivre</button>
+                    {type === 'suggestion' && (
+                        <button className='follow-btn'>Suivre</button>
+                    )}
+                    {type === 'card' && (
+                        <img src='./img/icons/check.svg' alt='check' />
+                    )}
                 </span>
             )}
         </>
