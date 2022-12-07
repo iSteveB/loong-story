@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { followUser, unfollowUser } from '../../features/userSlices';
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 const FollowHandler = ({ followId, type }) => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.user.user);
@@ -50,6 +53,7 @@ const FollowHandler = ({ followId, type }) => {
                     {type === 'card' && (
                         <img src='./img/icons/checked.svg' alt='checked' />
                     )}
+                    
                 </span>
             ) : (
                 <span onClick={handleFollow}>
@@ -58,6 +62,20 @@ const FollowHandler = ({ followId, type }) => {
                     )}
                     {type === 'card' && (
                         <img src='./img/icons/check.svg' alt='check' />
+                    )}
+                    {type === 'disconnect' && (
+                        <Popup
+                            trigger={
+                                <img src='./img/icons/check.svg' alt='checked' />
+                            }
+                            position={[
+                                'bottom center',
+                                'bottom right',
+                                'bottom left',
+                            ]}
+                            closeOnDocumentClick>
+                            <div>Connectez-vous pour suivre ce compte !</div>
+                        </Popup>
                     )}
                 </span>
             )}

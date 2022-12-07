@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { dateParser } from './utils';
-import FollowHandler from '../components/Profil/FollowHandler';
+import { dateParser } from '../utils';
+import FollowHandler from '../Profil/FollowHandler';
+import LikeButton from './LikeButton';
 
 const Card = ({ post }) => {
     const [isLoading, setIsLoading] = useState(true);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
+    const userId = useSelector((state) => state.userId.userId);
 
     useEffect(() => {
         if (usersData) setIsLoading(false);
@@ -42,7 +44,7 @@ const Card = ({ post }) => {
                                     {post.posterId !== userData?._id && (
                                         <FollowHandler
                                             followId={post.posterId}
-                                            type={'card'}
+                                            type={userId ? 'card' : 'disconnect'}
                                         />
                                     )}
                                 </h3>
@@ -57,23 +59,26 @@ const Card = ({ post }) => {
                                 className='card-pic'
                             />
                         )}
-                        {post.video && (
+                        {/*post.video && (
                             <iframe
-                            title={post._id}
+                                title={post._id}
                                 width='500'
                                 height='300'
                                 src={post.video}
                                 frameBorder='0'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                                 allowFullScreen></iframe>
-                        )}
-                        <div className="card-footer">
-                            <div className="comment-icon">
-                                <img src="./img/icons/message1.svg" alt="comment" />
+                        )*/}
+                        <div className='card-footer'>
+                            <div className='comment-icon'>
+                                <img
+                                    src='./img/icons/message1.svg'
+                                    alt='comment'
+                                />
                                 <span>{post.comments.length}</span>
                             </div>
-                            <h6>Like Button</h6>
-                            <img src="./img/icons/share.svg" alt="share" />
+                            <LikeButton post={post}/>
+                            <img src='./img/icons/share.svg' alt='share' />
                         </div>
                     </div>
                 </>

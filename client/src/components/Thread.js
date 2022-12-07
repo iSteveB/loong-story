@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../features/postsSlices';
-import Card from './Card';
+import Card from './Post/Card';
 
 const Thread = () => {
     const [loadPosts, setLoadPosts] = useState(true);
@@ -22,8 +22,8 @@ const Thread = () => {
     return (
         <div className='thread-container'>
             <ul>
-                {posts?.map( post => {
-                    return <Card post={post} key={post._id}/>
+                {posts?.map((post) => {
+                    return <Card post={post} key={post._id} />;
                 })}
             </ul>
         </div>
