@@ -7,7 +7,8 @@ export const postsSlices = createSlice({
     },
     reducers: {
         getPosts: (state, { payload }) => {
-            state.posts = payload;
+            const postsList = payload.data.slice(0, payload.countPosts)
+            state.posts = postsList;
         },
         likePost: (state, { payload }) => {
             state.posts.map((post) => {
