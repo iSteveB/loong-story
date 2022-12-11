@@ -11,24 +11,28 @@ const Thread = () => {
     const posts = useSelector((state) => state.posts.posts);
 
     const loadMorePosts = () => {
-        if(window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight){
-            setLoadPosts(true)
+        if (
+            window.innerHeight + document.documentElement.scrollTop + 1 >
+            document.scrollingElement.scrollHeight
+        ) {
+            setLoadPosts(true);
         }
-    }
-
+    };
 
     useEffect(() => {
         if (loadPosts) {
             axios
                 .get(`${process.env.REACT_APP_API_URL}api/post/`)
-                .then((res) => dispatch(getPosts({data: res.data, countPosts})))
+                .then((res) =>
+                    dispatch(getPosts({ data: res.data, countPosts }))
+                )
                 .catch((error) => console.log(error));
             setLoadPosts(false);
-            setCountPosts( countPosts + 5 )
+            setCountPosts(countPosts + 5);
         }
 
-        window.addEventListener('scroll', loadMorePosts)
-        return () => window.removeEventListener('scroll', loadMorePosts)
+        window.addEventListener('scroll', loadMorePosts);
+        return () => window.removeEventListener('scroll', loadMorePosts);
     }, [loadPosts, dispatch, countPosts]);
 
     return (
@@ -41,5 +45,5 @@ const Thread = () => {
         </div>
     );
 };
- 
+
 export default Thread;

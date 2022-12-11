@@ -24,8 +24,15 @@ export const postsSlices = createSlice({
                 } else return post;
             });
         },
+        updatePost: (state, { payload }) => {
+            state.posts.map((post) => {
+                if (post._id === payload.postId) {
+                    return post.message = payload.textUpdate;
+                } else return post;
+            });
+        }
     },
 });
 
-export const { getPosts, likePost, unlikePost } = postsSlices.actions;
+export const { getPosts, likePost, unlikePost, updatePost } = postsSlices.actions;
 export default postsSlices.reducer;
