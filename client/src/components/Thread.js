@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../features/postsSlices';
-import Card from './Post/Card';
+import Card from './Post/Cards/Card';
 
 const Thread = () => {
     const [loadPosts, setLoadPosts] = useState(true);

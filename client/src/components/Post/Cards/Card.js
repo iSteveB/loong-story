@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dateParser } from '../utils';
-import { updatePost } from '../../features/postsSlices';
-import FollowHandler from '../Profil/FollowHandler';
-import LikeButton from './LikeButton';
+import { dateParser } from '../../utils';
+import { updatePost } from '../../../features/postsSlices';
+import DeleteCard from './DeleteCard';
+import FollowHandler from '../../Profil/FollowHandler';
+import LikeButton from '../LikeButton';
 import axios from 'axios';
+import CardComments from './CardComments';
 
 const Card = ({ post }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdating, setIsUpdating] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [showComments, setShowComments] = useState(false);
     const usersData = useSelector((state) => state.users.users);
     const userData = useSelector((state) => state.user.user);
     const userId = useSelector((state) => state.userId.userId);
@@ -22,7 +25,9 @@ const Card = ({ post }) => {
                 url: `${process.env.REACT_APP_API_URL}api/post/${post._id}`,
                 data: { message: textUpdate },
             })
-                .then(() => dispatch(updatePost({textUpdate, postId: post._id})))
+                .then(() =>
+                    {dispatch(updatePost({ textUpdate, postId: post._id }))}
+                )
                 .catch((error) => console.log(error));
         }
         setIsUpdating(false);
@@ -114,10 +119,13 @@ const Card = ({ post }) => {
                                         alt='edit'
                                     />
                                 </div>
+                                <DeleteCard postId={post._id} />
                             </div>
                         )}
                         <div className='card-footer'>
-                            <div className='comment-icon'>
+                            <div
+                                onClick={()=>setShowComments(!showComments)}
+                                className='comment-icon'>
                                 <img
                                     src='./img/icons/message1.svg'
                                     alt='comment'
@@ -127,6 +135,7 @@ const Card = ({ post }) => {
                             <LikeButton post={post} />
                             <img src='./img/icons/share.svg' alt='share' />
                         </div>
+                        {showComments && <CardComments post={post} />}
                     </div>
                 </>
             )}

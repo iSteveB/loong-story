@@ -2,35 +2,34 @@ const PostModel = require('../models/post.model');
 const UserModel = require('../models/user.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 
-const makeFileName = (req)=> {
-
-    const MIME_TYPES = {        
+const makeFileName = (req) => {
+    const MIME_TYPES = {
         'image/jpg': 'jpg',
         'image/jpeg': 'jpg',
         'image/png': 'jpg',
     };
 
-    const name = req.file.originalname.toLowerCase().split('.')[0].replace(/\s/g, "_");
+    const name = req.file.originalname
+        .toLowerCase()
+        .split('.')[0]
+        .replace(/\s/g, '_');
     const extension = MIME_TYPES[req.file.mimetype];
 
     const fileName = name + Math.floor(Date.now() / 1000) + '.' + extension;
 
     return fileName;
-
-}
-
+};
 
 module.exports.createPost = async (req, res) => {
-    
     const newPost = PostModel({
         posterID: req.body.posterID,
         message: req.body.message,
-        picture: req.file ? `./uploads/profil/${makeFileName(req)}` : "",
+        picture: req.file ? `./uploads/profil/${makeFileName(req)}` : '',
         video: req.body.video,
         likers: [],
         comments: [],
     });
-    
+
     try {
         const post = await newPost.save();
         return res.status(201).json(post);
@@ -137,7 +136,7 @@ module.exports.commentPost = (req, res) => {
             {
                 $push: {
                     comments: {
-                        commenterID: req.body.commenterID,
+                        commenterId: req.body.commenterId,
                         commenterPseudo: req.body.commenterPseudo,
                         text: req.body.text,
                         timestamp: new Date().getTime(),
@@ -160,7 +159,7 @@ module.exports.editCommentPost = (req, res) => {
     try {
         return PostModel.findById(req.params.id, (err, docs) => {
             const theComment = docs.comments.find((comment) =>
-                comment._id.equals(req.body.commentID)
+                comment._id.equals(req.body.commentId)
             );
 
             if (!theComment) return res.status(404).send('Comment not found');
@@ -186,7 +185,7 @@ module.exports.deleteCommentPost = (req, res) => {
             {
                 $pull: {
                     comments: {
-                        _id: req.body.commentID,
+                        _id: req.body.commentId,
                     },
                 },
             },

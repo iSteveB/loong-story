@@ -7,7 +7,7 @@ export const postsSlices = createSlice({
     },
     reducers: {
         getPosts: (state, { payload }) => {
-            const postsList = payload.data.slice(0, payload.countPosts)
+            const postsList = payload.data.slice(0, payload.countPosts);
             state.posts = postsList;
         },
         likePost: (state, { payload }) => {
@@ -20,19 +20,25 @@ export const postsSlices = createSlice({
         unlikePost: (state, { payload }) => {
             state.posts.map((post) => {
                 if (post._id === payload.postId) {
-                    return post.likers = post.likers.filter((id) => id !== payload.userId);
+                    return (post.likers = post.likers.filter(
+                        (id) => id !== payload.userId
+                    ));
                 } else return post;
             });
         },
         updatePost: (state, { payload }) => {
             state.posts.map((post) => {
                 if (post._id === payload.postId) {
-                    return post.message = payload.textUpdate;
+                    return (post.message = payload.textUpdate);
                 } else return post;
             });
-        }
+        },
+        deletePost: (state, { payload }) => {
+            state.posts = state.posts.filter( post => post._id !== payload);
+        },
     },
 });
 
-export const { getPosts, likePost, unlikePost, updatePost } = postsSlices.actions;
+export const { getPosts, likePost, unlikePost, updatePost, deletePost } =
+    postsSlices.actions;
 export default postsSlices.reducer;
