@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import FollowHandler from '../../Profil/FollowHandler';
 import { timestampParser } from '../../utils';
-import { addComments } from '../../../features/commentsSlices';
-import { getPosts } from '../../../features/postsSlices';
+import { getPosts, addComments } from '../../../features/postsSlices';
+import EditDeleteComment from './EditDeleteComment';
 
 const CardComments = ({ post }) => {
     const [comment, setComment] = useState('');
@@ -81,6 +81,7 @@ const CardComments = ({ post }) => {
                                 </span>
                             </div>
                             <p>{comment.text}</p>
+                            <EditDeleteComment comment={comment} postId={post._id} />
                         </div>
                     </div>
                 );

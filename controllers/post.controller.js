@@ -22,7 +22,7 @@ const makeFileName = (req) => {
 
 module.exports.createPost = async (req, res) => {
     const newPost = PostModel({
-        posterID: req.body.posterID,
+        posterId: req.body.posterId,
         message: req.body.message,
         picture: req.file ? `./uploads/profil/${makeFileName(req)}` : '',
         video: req.body.video,
@@ -162,10 +162,14 @@ module.exports.editCommentPost = (req, res) => {
                 comment._id.equals(req.body.commentId)
             );
 
-            if (!theComment) return res.status(404).send('Comment not found');
-            theComment.text = req.body.text;
+            if (!theComment) {
+                return res.status(404).send('Comment not found');
+            } else {
+                theComment.text = req.body.text;
+            }
 
             return docs.save((err) => {
+                console.log(docs);
                 if (!err) return res.status(200).send(docs);
                 else return res.status(500).send(err);
             });

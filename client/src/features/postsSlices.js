@@ -4,6 +4,7 @@ export const postsSlices = createSlice({
     name: 'posts',
     initialState: {
         posts: null,
+        comments: null,
     },
     reducers: {
         getPosts: (state, { payload }) => {
@@ -34,11 +35,42 @@ export const postsSlices = createSlice({
             });
         },
         deletePost: (state, { payload }) => {
-            state.posts = state.posts.filter( post => post._id !== payload);
+            state.posts = state.posts.filter((post) => post._id !== payload);
+        },
+        addComments: (state, { payload }) => {
+            state.comments = payload;
+        },
+        editComments: (state, { payload }) => {
+            state.posts.map((post) => {
+                if (post._id === payload.postId) {
+                    post.comments.map((comment) => {
+                        if (comment._id === payload.commentId) {
+                            return (comment.text = payload.text);
+                        } else return comment;
+                    });
+                } else return post;
+            });
+        },
+        deleteComment: (state, { payload }) => {
+            state.posts.map((post) => {
+                if (post._id === payload.postId) {
+                    return post.comments = post.comments.filter(
+                        (comment) => comment._id !== payload.commentId
+                    );
+                } else return post;
+            });
         },
     },
 });
 
-export const { getPosts, likePost, unlikePost, updatePost, deletePost } =
-    postsSlices.actions;
+export const {
+    getPosts,
+    likePost,
+    unlikePost,
+    updatePost,
+    deletePost,
+    addComments,
+    editComments,
+    deleteComment,
+} = postsSlices.actions;
 export default postsSlices.reducer;

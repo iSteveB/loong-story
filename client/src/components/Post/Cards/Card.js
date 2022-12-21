@@ -25,9 +25,9 @@ const Card = ({ post }) => {
                 url: `${process.env.REACT_APP_API_URL}api/post/${post._id}`,
                 data: { message: textUpdate },
             })
-                .then(() =>
-                    {dispatch(updatePost({ textUpdate, postId: post._id }))}
-                )
+                .then(() => {
+                    dispatch(updatePost({ textUpdate, postId: post._id }));
+                })
                 .catch((error) => console.log(error));
         }
         setIsUpdating(false);
@@ -124,7 +124,7 @@ const Card = ({ post }) => {
                         )}
                         <div className='card-footer'>
                             <div
-                                onClick={()=>setShowComments(!showComments)}
+                                onClick={() => setShowComments(!showComments)}
                                 className='comment-icon'>
                                 <img
                                     src='./img/icons/message1.svg'
