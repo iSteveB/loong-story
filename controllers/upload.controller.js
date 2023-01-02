@@ -1,5 +1,4 @@
 const UserModel = require('../models/user.model');
-const fs = require('fs');
 
 const makeFileName = (req) => {
     const MIME_TYPES = {

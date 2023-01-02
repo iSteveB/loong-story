@@ -5,8 +5,9 @@ import { uploadPicture } from '../../features/userSlices';
 
 const UploadImg = (e) => {
     const [file, setFile] = useState();
-    const dispatch = useDispatch();
+    const [isError, setIsError] = useState(null);
     const formRef = useRef();
+    const dispatch = useDispatch();
     const userData = useSelector((state) => state.user.user);
 
     const handlePicture = (e) => {
@@ -20,36 +21,46 @@ const UploadImg = (e) => {
 
         axios
             .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
-            .then(() => {
-                axios
-                    .get(
-                        `${process.env.REACT_APP_API_URL}api/user/${userData._id}`
-                    )
-                    .then((res) => dispatch(uploadPicture(res.data.picture)))
-                    .catch((error) => console.log(error));
-                formRef.current.reset();
+            .then((res) => {
+                if (res.data.errors) {
+                    setIsError(res.data.errors);
+                } else {
+                    setIsError(null);
+                    axios
+                        .get(
+                            `${process.env.REACT_APP_API_URL}api/user/${userData._id}`
+                        )
+                        .then((res) =>
+                            dispatch(uploadPicture(res.data.picture))
+                        )
+                        .catch((error) => console.log(error));
+                    formRef.current.reset();
+                }
             })
             .catch((error) => console.log(error));
     };
 
     return (
-        <form
-            action=''
-            onSubmit={handlePicture}
-            className='upload-pic'
-            encType='multipart/form-data'
-            ref={formRef}>
-            <label htmlFor='file'>Changer d'image</label>
-            <input
-                type='file'
-                id='file'
-                name='profilPicture'
-                accept='.jpg, .jpeg, .png'
-                onChange={(e) => setFile(e.target.files[0])}
-            />
-            <br />
-            <input type='submit' value='Envoyer' />
-        </form>
+        <>
+            <form
+                action=''
+                onSubmit={handlePicture}
+                className='upload-pic'
+                encType='multipart/form-data'
+                ref={formRef}>
+                <label htmlFor='file'>Changer d'image</label>
+                <input
+                    type='file'
+                    id='file'
+                    name='profilPicture'
+                    accept='.jpg, .jpeg, .png'
+                    onChange={(e) => setFile(e.target.files[0])}
+                />
+                <br />
+                <input type='submit' value='Envoyer' />
+            </form>
+            {isError && <p>{isError.format}</p>}
+        </>
     );
 };
 

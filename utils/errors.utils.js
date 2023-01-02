@@ -33,11 +33,11 @@ module.exports.signInErrors = (err) => {
 module.exports.uploadErrors = (err) => {
     let errors = { format: '', maxSize: '' };
 
-    if (err.message.includes('Invalid file'))
-        errors.format = 'Format incompatible';
+    if (err = ('fichier incompatible'))
+        errors.format = 'Le fichier doit être au format png, jpg ou jpeg et faire moins de 5 Mo';
 
-    if (err.message.includes('Max size'))
-        errors.maxSize = 'Le fichier dépasse 500ko';
+    if (err.code = ('LIMIT_FILE_SIZE'))
+        errors.maxSize = 'Le fichier ne doit pas faire plus de 500ko';
 
     return errors;
 };

@@ -155,8 +155,8 @@ const UpdateProfil = () => {
                                             </li>
                                         );
                                     }
-                                }
-                            })}
+                                } 
+                            })} 
                         </ul>
                     </div>
                 </div>

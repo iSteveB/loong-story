@@ -169,7 +169,6 @@ module.exports.editCommentPost = (req, res) => {
             }
 
             return docs.save((err) => {
-                console.log(docs);
                 if (!err) return res.status(200).send(docs);
                 else return res.status(500).send(err);
             });

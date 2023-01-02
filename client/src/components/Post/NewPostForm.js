@@ -11,7 +11,9 @@ const NewPostForm = () => {
     const [postPicture, setPostPicture] = useState(null);
     const [video, setVideo] = useState('');
     const [file, setFile] = useState(null);
+    const [isError, setIsError] = useState(null)
     const userData = useSelector((state) => state.user.user);
+    
     const dispatch = useDispatch();
 
     const handlePicture = (e) => {
@@ -19,8 +21,6 @@ const NewPostForm = () => {
         setFile(e.target.files[0]);
         setVideo('');
     };
-
-    
 
     const handlePost = async () => {
         if (message || postPicture || video) {
@@ -35,7 +35,13 @@ const NewPostForm = () => {
                 url: `${process.env.REACT_APP_API_URL}api/post/`,
                 data: data,
             })
-                .then(() => {
+                .then((res) => {
+                    if (res.data.errors) {
+                        setIsError(res.data.errors);
+                    } else {
+                        setIsError(null)
+                    }
+                    
                     axios
                         .get(`${process.env.REACT_APP_API_URL}api/post/`)
                         .then((res) => {
@@ -43,14 +49,14 @@ const NewPostForm = () => {
                             dispatch(addPost(res.data));
                         })
                         .catch((error) => console.log(error));
-                        cancelPost()
-                    
+                    cancelPost();
                 })
                 .catch((error) => console.log(error));
         } else {
-            alert('Entrez un message !');
+            alert('Entrez un message !')
         }
     };
+
     const cancelPost = () => {
         setMessage('');
         setPostPicture('');
@@ -63,7 +69,7 @@ const NewPostForm = () => {
 
         const handleVideo = () => {
             let findLink = message.split(' ');
-    
+
             for (let i = 0; i < findLink.length; i++) {
                 if (
                     findLink[i].includes('https://www.youtube') ||
@@ -174,6 +180,9 @@ const NewPostForm = () => {
                                     </button>
                                 )}
                             </div>
+                            {isError?.format ? (
+                                <p>{isError.format}</p>
+                            ) : null}
                             <div className='btn-send'>
                                 {message || postPicture || video.length > 20 ? (
                                     <button

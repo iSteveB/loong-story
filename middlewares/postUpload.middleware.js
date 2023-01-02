@@ -1,6 +1,7 @@
 const multer = require('multer');
+const { uploadErrors } = require('../utils/errors.utils');
 
-const MIME_TYPES = {        
+const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
     'image/png': 'jpg',
@@ -13,7 +14,10 @@ const storage = multer.diskStorage({
         callback(null, `${__dirname}/../client/public/uploads/posts`);
     },
     filename: (req, file, callback) => {
-        const name = file.originalname.toLowerCase().split('.')[0].replace(/\s/g, "_");
+        const name = file.originalname
+            .toLowerCase()
+            .split('.')[0]
+            .replace(/\s/g, '_');
         const extension = MIME_TYPES[file.mimetype];
 
         callback(null, name + Math.floor(Date.now() / 1000) + '.' + extension);
@@ -31,12 +35,8 @@ module.exports = multer({
             callback(null, true);
         } else {
             callback(null, false);
-            return callback(
-                new Error(
-                    'Seul les fichiers .png, .jpeg et .jpg sont acceptés. '
-                )
-            );
+            return callback(uploadErrors('fichier incompatible'));
         }
     },
-    limits: { fileSize: maxSize }
+    limits: { fileSize: maxSize },
 }).single('file');
