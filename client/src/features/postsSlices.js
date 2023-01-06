@@ -4,16 +4,18 @@ export const postsSlices = createSlice({
     name: 'posts',
     initialState: {
         posts: null,
+        allPosts: null,
         comments: null,
-        newPost: null
+        newPost: null,
     },
     reducers: {
         getPosts: (state, { payload }) => {
             const postsList = payload.data.slice(0, payload.countPosts);
             state.posts = postsList;
+            state.allPosts = payload.data;
         },
         addPost: (state, { payload }) => {
-            state.newPost = payload
+            state.newPost = payload;
         },
         likePost: (state, { payload }) => {
             state.posts.map((post) => {

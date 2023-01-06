@@ -116,6 +116,7 @@ const UpdateProfil = () => {
                                         );
                                     }
                                 }
+                                return user
                             })}
                         </ul>
                     </div>
@@ -155,7 +156,7 @@ const UpdateProfil = () => {
                                             </li>
                                         );
                                     }
-                                } 
+                                } return user
                             })} 
                         </ul>
                     </div>

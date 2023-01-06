@@ -101,7 +101,7 @@ const Card = ({ post }) => {
                                 className='card-pic'
                             />
                         )}
-                        {/*post.video && (
+                        {post.video && (
                             <iframe
                                 title={post._id}
                                 width='500'
@@ -109,7 +109,7 @@ const Card = ({ post }) => {
                                 src={post.video}
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                                 allowFullScreen></iframe>
-                        )*/}
+                        )}
                         {userData?._id === post.posterId && (
                             <div className='button-container'>
                                 <div onClick={() => setIsUpdating(!isUpdating)}>
