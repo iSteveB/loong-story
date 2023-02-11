@@ -43,7 +43,7 @@ const FriendsHints = () => {
             ) : (
                 <ul>
                     {friendsHint && friendsHint.map(user => {
-                        for (let i= 0; i < usersData.length; i++){
+                        for (let i = 0; i < usersData.length; i++){
                             if (user === usersData[i]._id){
                                 return (
                                     <li className="user-hint" key={user}>
