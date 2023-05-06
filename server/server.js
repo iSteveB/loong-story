@@ -13,7 +13,7 @@ const { checkUser, requireAuth } = require('./middlewares/auth.middleware');
 const app = express();
 
 const corsOptions = {
-    origin: process.env.CLIENT_URL,
+    origin: "https://loong-story.onrender.com/",
     credentials: true,
     allowedHeaders: ['sessionId', 'Content-Type'],
     exposedHeaders: ['sessionId'],
