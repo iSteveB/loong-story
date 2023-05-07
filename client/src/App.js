@@ -19,7 +19,7 @@ const App = () => {
                 .catch((error) => console.log(error));
 
             await axios
-                .get(`${process.env.REACT_APP_API_URL}jwtid`, {
+                .get(`${process.env.REACT_APP_API_URL}/jwtid`, {
                     withCredentials: true,
                 })
                 .then((res) => {
