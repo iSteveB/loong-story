@@ -16,7 +16,7 @@ const EditDeleteComment = ({ comment, postId }) => {
         if (textUpdated) {
             axios({
                 method: 'patch',
-                url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
+                url: `${process.env.REACT_APP_API_URL}/api/post/edit-comment-post/${postId}`,
                 data: { commentId: comment._id, text: textUpdated },
             }).then(() => {
                 dispatch(
@@ -36,7 +36,7 @@ const EditDeleteComment = ({ comment, postId }) => {
     
         axios({
             method: 'patch',
-            url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
+            url: `${process.env.REACT_APP_API_URL}/api/post/delete-comment-post/${postId}`,
             data: { commentId: comment._id },
         })
             .then(() => {

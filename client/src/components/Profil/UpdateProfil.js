@@ -21,7 +21,7 @@ const UpdateProfil = () => {
         e.preventDefault();
         axios({
             method: 'put',
-            url: `${process.env.REACT_APP_API_URL}api/user/${userId}`,
+            url: `${process.env.REACT_APP_API_URL}/api/user/${userId}`,
             data: { bio },
         })
             .then(() => {

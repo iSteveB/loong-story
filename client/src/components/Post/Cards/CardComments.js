@@ -19,7 +19,7 @@ const CardComments = ({ post }) => {
         if (comment) {
             axios({
                 method: 'patch',
-                url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${post._id}`,
+                url: `${process.env.REACT_APP_API_URL}/api/post/comment-post/${post._id}`,
                 data: {
                     text: comment,
                     commenterId: userId,
@@ -29,7 +29,7 @@ const CardComments = ({ post }) => {
                 .then(() => {
                     dispatch(addComments(post._id));
                     axios
-                        .get(`${process.env.REACT_APP_API_URL}api/post/`)
+                        .get(`${process.env.REACT_APP_API_URL}/api/post/`)
                         .then((res) =>
                             dispatch(getPosts({ data: res.data }))
                         )

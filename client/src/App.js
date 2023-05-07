@@ -14,7 +14,7 @@ const App = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             await axios
-                .get(`${process.env.REACT_APP_API_URL}api/user/`)
+                .get(`${process.env.REACT_APP_API_URL}/api/user/`)
                 .then((res) => dispatch(getUsers(res.data)))
                 .catch((error) => console.log(error));
 
@@ -29,7 +29,7 @@ const App = () => {
 
             if (userId) {
                 axios
-                    .get(`${process.env.REACT_APP_API_URL}api/user/${userId}`)
+                    .get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
                     .then((res) => dispatch(getUser(res.data)))
                     .catch((error) => console.log(error + userId));
             }
@@ -37,7 +37,7 @@ const App = () => {
 
         const fetchPosts = async () => {
             await axios
-                .get(`${process.env.REACT_APP_API_URL}api/post/`)
+                .get(`${process.env.REACT_APP_API_URL}/api/post/`)
                 .then((res) => dispatch(getPosts( {data: res.data})))
                 .catch((error) => console.log(error));
         };

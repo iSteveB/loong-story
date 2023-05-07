@@ -22,7 +22,7 @@ const Card = ({ post }) => {
         if (textUpdate) {
             axios({
                 method: 'put',
-                url: `${process.env.REACT_APP_API_URL}api/post/${post._id}`,
+                url: `${process.env.REACT_APP_API_URL}/api/post/${post._id}`,
                 data: { message: textUpdate },
             })
                 .then(() => {

@@ -8,7 +8,7 @@ const DeleteCard = ({postId}) => {
     const deleteOnePost = () => {
         axios({
             method: 'delete',
-            url: `${process.env.REACT_APP_API_URL}api/post/${postId}`
+            url: `${process.env.REACT_APP_API_URL}/api/post/${postId}`
         })
         .then(() => dispatch(deletePost(postId)))
         .catch((error) => console.log(error))

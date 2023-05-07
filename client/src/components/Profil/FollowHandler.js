@@ -14,7 +14,7 @@ const FollowHandler = ({ followId, type }) => {
     const handleFollow = () => {
         axios({
             method: 'patch',
-            url: `${process.env.REACT_APP_API_URL}api/user/follow/${userData._id}`,
+            url: `${process.env.REACT_APP_API_URL}/api/user/follow/${userData._id}`,
             data: { followId },
         })
             .then(() => {
@@ -27,7 +27,7 @@ const FollowHandler = ({ followId, type }) => {
     const handleUnfollow = () => {
         axios({
             method: 'patch',
-            url: `${process.env.REACT_APP_API_URL}api/user/unfollow/${userData._id}`,
+            url: `${process.env.REACT_APP_API_URL}/api/user/unfollow/${userData._id}`,
             data: { followId },
         })
             .then(() => {

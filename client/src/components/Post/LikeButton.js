@@ -13,7 +13,7 @@ const LikeButton = ({ post }) => {
     const like = () => {
         axios({
             method: 'patch',
-            url: `${process.env.REACT_APP_API_URL}api/post/like-post/${post._id}`,
+            url: `${process.env.REACT_APP_API_URL}/api/post/like-post/${post._id}`,
             data: { id: userId },
         })
             .then(() => dispatch(likePost({ userId, postId: post._id })))
@@ -25,7 +25,7 @@ const LikeButton = ({ post }) => {
     const unlike = () => {
         axios({
             method: 'patch',
-            url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/${post._id}`,
+            url: `${process.env.REACT_APP_API_URL}/api/post/unlike-post/${post._id}`,
             data: { id: userId },
         })
             .then(() => dispatch(unlikePost({ userId, postId: post._id })))

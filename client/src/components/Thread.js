@@ -22,7 +22,7 @@ const Thread = () => {
     useEffect(() => {
         if (loadPosts) {
             axios
-                .get(`${process.env.REACT_APP_API_URL}api/post/`)
+                .get(`${process.env.REACT_APP_API_URL}/api/post/`)
                 .then((res) =>
                     dispatch(getPosts({ data: res.data, countPosts }))
                 )

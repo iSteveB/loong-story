@@ -20,7 +20,7 @@ const UploadImg = (e) => {
         data.append('profilPicture', file);
 
         axios
-            .post(`${process.env.REACT_APP_API_URL}api/user/upload`, data)
+            .post(`${process.env.REACT_APP_API_URL}/api/user/upload`, data)
             .then((res) => {
                 if (res.data.errors) {
                     setIsError(res.data.errors);
@@ -28,7 +28,7 @@ const UploadImg = (e) => {
                     setIsError(null);
                     axios
                         .get(
-                            `${process.env.REACT_APP_API_URL}api/user/${userData._id}`
+                            `${process.env.REACT_APP_API_URL}/api/user/${userData._id}`
                         )
                         .then((res) =>
                             dispatch(uploadPicture(res.data.picture))

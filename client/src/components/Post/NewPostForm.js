@@ -32,7 +32,7 @@ const NewPostForm = () => {
 
             await axios({
                 method: 'post',
-                url: `${process.env.REACT_APP_API_URL}api/post/`,
+                url: `${process.env.REACT_APP_API_URL}/api/post/`,
                 data: data,
             })
                 .then((res) => {
@@ -43,7 +43,7 @@ const NewPostForm = () => {
                     }
                     
                     axios
-                        .get(`${process.env.REACT_APP_API_URL}api/post/`)
+                        .get(`${process.env.REACT_APP_API_URL}/api/post/`)
                         .then((res) => {
                             dispatch(getPosts({ data: res.data }));
                             dispatch(addPost(res.data));
