@@ -41,6 +41,10 @@ app.use(
 );
 
 //Server
-app.listen(process.env.PORT, () => {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
+app.listen(port, () => {
     console.log(`Listening on port ${process.env.PORT}`);
 });
