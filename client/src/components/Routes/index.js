@@ -9,7 +9,7 @@ const Router = () => {
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route path='/home' exact element={<Home />} />
+                <Route path='/' exact element={<Home />} />
                 <Route path='/profil' exact element={<Profil />} />
                 <Route path='/trending' exact element={<Trending />} />
                 <Route path='*' element={<Navigate to='/home' replace />} />
