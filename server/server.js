@@ -14,11 +14,10 @@ const app = express();
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://loongstory.onrender.com/home');
-    res.setHeader('Permissions-Policy', 'ch-ua-form-factor');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'false')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     next();
   });
 
