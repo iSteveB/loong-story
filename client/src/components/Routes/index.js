@@ -12,7 +12,7 @@ const Router = () => {
                 <Route path='/' exact element={<Home />} />
                 <Route path='/profil' exact element={<Profil />} />
                 <Route path='/trending' exact element={<Trending />} />
-                <Route path='*' element={<Navigate to='/home' replace />} />
+                <Route path='*' element={<Navigate to='/' replace />} />
             </Routes>
         </BrowserRouter>
     );

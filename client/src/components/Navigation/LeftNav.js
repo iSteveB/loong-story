@@ -5,7 +5,7 @@ const LeftNav = () => {
         <div className="left-nav-container">
             <div className="icons">
                 <div className="icons-bis">
-                    <NavLink to='/home' className={({ isActive }) => isActive ? 'active-left-nav' : ''}>
+                    <NavLink to='/' className={({ isActive }) => isActive ? 'active-left-nav' : ''}>
                         <img src="./img/icons/home.svg" alt="home" />
                     </NavLink>
                     <br />
