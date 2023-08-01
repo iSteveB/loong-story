@@ -1,4 +1,4 @@
-/*! For license information please see main.1a617ee7.js.LICENSE.txt */
+/*! For license information please see main.d65d0673.js.LICENSE.txt */
 !(function () {
     var e = {
             4569: function (e, t, n) {
@@ -16691,7 +16691,7 @@
                             var t = document.querySelector('.email.error'),
                                 r = document.querySelector('.password.error');
                             Ae()({
-                                method: 'get',
+                                method: 'post',
                                 url: ''.concat(
                                     'https://loong-story.onrender.com',
                                     '/api/user/login'
@@ -20242,4 +20242,4 @@
             );
         })();
 })();
-//# sourceMappingURL=main.1a617ee7.js.map
+//# sourceMappingURL=main.d65d0673.js.map

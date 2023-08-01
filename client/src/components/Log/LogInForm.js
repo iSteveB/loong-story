@@ -11,7 +11,7 @@ const LogInForm = () => {
         const passwordError = document.querySelector('.password.error');
 
         axios({
-            method: 'get',
+            method: 'post',
             url: `${process.env.REACT_APP_API_URL}/api/user/login`,
             withCredentials: true,
             data: {
