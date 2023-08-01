@@ -13,6 +13,15 @@ const { checkUser, requireAuth } = require('./middlewares/auth.middleware');
 const app = express();
 
 // Enable CORS
+const corsOptions = {
+  origin: 'https://loongstory.onrender.com',
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  preflightContinue: true,
+}
+
+app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://loongstory.onrender.com');
