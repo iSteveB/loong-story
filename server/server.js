@@ -14,23 +14,15 @@ const app = express();
 
 // Enable CORS
 const corsOptions = {
-  origin: 'https://loongstory.onrender.com',
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  preflightContinue: true,
-}
+    origin: 'https://loongstory.onrender.com',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: true,
+};
 
-app.options(cors())
-app.use(cors(corsOptions))
-
-/*app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://loongstory.onrender.com');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});*/
+app.options(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -52,8 +44,8 @@ app.use(
 
 //Server
 let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8080;
+if (port == null || port == '') {
+    port = 8080;
 }
 app.listen(port, () => {
     console.log(`Listening on port ${process.env.PORT}`);
