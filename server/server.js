@@ -14,7 +14,7 @@ const app = express();
 
 // Enable CORS
 const corsOptions = {
-    origin: (req, res) => {req.headers.origin},
+    origin: 'https://loongstory.onrender.com',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
