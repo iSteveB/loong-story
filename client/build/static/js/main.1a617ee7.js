@@ -16243,7 +16243,7 @@
                                                         Ae()({
                                                             method: 'post',
                                                             url: ''.concat(
-                                                                'https://loong-story:10000',
+                                                                'https://loong-story.onrender.com',
                                                                 '/api/post/'
                                                             ),
                                                             data: t,
@@ -16258,7 +16258,7 @@
                                                                     Ae()
                                                                         .get(
                                                                             ''.concat(
-                                                                                'https://loong-story:10000',
+                                                                                'https://loong-story.onrender.com',
                                                                                 '/api/post/'
                                                                             )
                                                                         )
@@ -16693,7 +16693,7 @@
                             Ae()({
                                 method: 'get',
                                 url: ''.concat(
-                                    'https://loong-story:10000',
+                                    'https://loong-story.onrender.com',
                                     '/api/user/login'
                                 ),
                                 withCredentials: !0,
@@ -16821,7 +16821,7 @@
                                                         Ae()({
                                                             method: 'post',
                                                             url: ''.concat(
-                                                                'https://loong-story:10000',
+                                                                'https://loong-story.onrender.com',
                                                                 '/api/user/register'
                                                             ),
                                                             data: {
@@ -17082,7 +17082,7 @@
                                     method: 'delete',
                                     url: ''
                                         .concat(
-                                            'https://loong-story:10000',
+                                            'https://loong-story.onrender.com',
                                             '/api/post/'
                                         )
                                         .concat(t),
@@ -17895,7 +17895,7 @@
                                               method: 'patch',
                                               url: ''
                                                   .concat(
-                                                      'https://loong-story:10000',
+                                                      'https://loong-story.onrender.com',
                                                       '/api/user/unfollow/'
                                                   )
                                                   .concat(a._id),
@@ -17927,7 +17927,7 @@
                                               method: 'patch',
                                               url: ''
                                                   .concat(
-                                                      'https://loong-story:10000',
+                                                      'https://loong-story.onrender.com',
                                                       '/api/user/follow/'
                                                   )
                                                   .concat(a._id),
@@ -18018,7 +18018,7 @@
                                                 method: 'patch',
                                                 url: ''
                                                     .concat(
-                                                        'https://loong-story:10000',
+                                                        'https://loong-story.onrender.com',
                                                         '/api/post/like-post/'
                                                     )
                                                     .concat(n._id),
@@ -18048,7 +18048,7 @@
                                                 method: 'patch',
                                                 url: ''
                                                     .concat(
-                                                        'https://loong-story:10000',
+                                                        'https://loong-story.onrender.com',
                                                         '/api/post/unlike-post/'
                                                     )
                                                     .concat(n._id),
@@ -18124,7 +18124,7 @@
                                                         method: 'patch',
                                                         url: ''
                                                             .concat(
-                                                                'https://loong-story:10000',
+                                                                'https://loong-story.onrender.com',
                                                                 '/api/post/edit-comment-post/'
                                                             )
                                                             .concat(r),
@@ -18175,7 +18175,7 @@
                                                                     method: 'patch',
                                                                     url: ''
                                                                         .concat(
-                                                                            'https://loong-story:10000',
+                                                                            'https://loong-story.onrender.com',
                                                                             '/api/post/delete-comment-post/'
                                                                         )
                                                                         .concat(
@@ -18362,7 +18362,7 @@
                                                     method: 'patch',
                                                     url: ''
                                                         .concat(
-                                                            'https://loong-story:10000',
+                                                            'https://loong-story.onrender.com',
                                                             '/api/post/comment-post/'
                                                         )
                                                         .concat(n._id),
@@ -18378,7 +18378,7 @@
                                                             Ae()
                                                                 .get(
                                                                     ''.concat(
-                                                                        'https://loong-story:10000',
+                                                                        'https://loong-story.onrender.com',
                                                                         '/api/post/'
                                                                     )
                                                                 )
@@ -18464,7 +18464,7 @@
                                                             method: 'put',
                                                             url: ''
                                                                 .concat(
-                                                                    'https://loong-story:10000',
+                                                                    'https://loong-story.onrender.com',
                                                                     '/api/post/'
                                                                 )
                                                                 .concat(n._id),
@@ -18801,7 +18801,7 @@
                                         (Ae()
                                             .get(
                                                 ''.concat(
-                                                    'https://loong-story:10000',
+                                                    'https://loong-story.onrender.com',
                                                     '/api/post/'
                                                 )
                                             )
@@ -19170,7 +19170,7 @@
                                         Ae()
                                             .post(
                                                 ''.concat(
-                                                    'https://loong-story:10000',
+                                                    'https://loong-story.onrender.com',
                                                     '/api/user/upload'
                                                 ),
                                                 t
@@ -19183,7 +19183,7 @@
                                                           .get(
                                                               ''
                                                                   .concat(
-                                                                      'https://loong-story:10000',
+                                                                      'https://loong-story.onrender.com',
                                                                       '/api/user/'
                                                                   )
                                                                   .concat(c._id)
@@ -19379,7 +19379,7 @@
                                                                                                 method: 'put',
                                                                                                 url: ''
                                                                                                     .concat(
-                                                                                                        'https://loong-story:10000',
+                                                                                                        'https://loong-story.onrender.com',
                                                                                                         '/api/user/'
                                                                                                     )
                                                                                                     .concat(
@@ -19835,7 +19835,7 @@
                                                         Ae()({
                                                             method: 'get',
                                                             url: ''.concat(
-                                                                'https://loong-story:10000',
+                                                                'https://loong-story.onrender.com',
                                                                 'api/user/logout'
                                                             ),
                                                             withCredentials: !0,
@@ -20023,7 +20023,7 @@
                                                                     Ae()
                                                                         .get(
                                                                             ''.concat(
-                                                                                'https://loong-story:10000',
+                                                                                'https://loong-story.onrender.com',
                                                                                 '/api/user/'
                                                                             )
                                                                         )
@@ -20054,7 +20054,7 @@
                                                                     Ae()
                                                                         .get(
                                                                             ''.concat(
-                                                                                'https://loong-story:10000',
+                                                                                'https://loong-story.onrender.com',
                                                                                 '/jwtid'
                                                                             ),
                                                                             {
@@ -20090,7 +20090,7 @@
                                                                         .get(
                                                                             ''
                                                                                 .concat(
-                                                                                    'https://loong-story:10000',
+                                                                                    'https://loong-story.onrender.com',
                                                                                     '/api/user/'
                                                                                 )
                                                                                 .concat(
@@ -20143,7 +20143,7 @@
                                                                     Ae()
                                                                         .get(
                                                                             ''.concat(
-                                                                                'https://loong-story:10000',
+                                                                                'https://loong-story.onrender.com',
                                                                                 '/api/post/'
                                                                             )
                                                                         )

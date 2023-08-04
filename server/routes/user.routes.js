@@ -8,7 +8,7 @@ const multer = require('multer');
 
 // Auth
 router.post('/register', authController.signUp);
-router.get('/login', authController.logIn);
+router.post('/login', authController.logIn);
 router.get('/logout', authController.logOut);
 
 // User DB
