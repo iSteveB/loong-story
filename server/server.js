@@ -17,8 +17,9 @@ const corsOptions = {
     origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    preflightContinue: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'sessionId'],
+    exposedHeaders: ['sessionId'],
+    preflightContinue: false
 };
 
 app.options(cors());
