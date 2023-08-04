@@ -14,7 +14,7 @@ const app = express();
 
 // Enable CORS
 const corsOptions = {
-    origin: req.headers.origin,
+    origin: (req, res) => {req.headers.origin},
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
