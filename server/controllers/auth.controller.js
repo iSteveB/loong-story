@@ -35,7 +35,7 @@ module.exports.logIn = async (req, res) => {
             secure: true,
             sameSite: 'none',
         });
-        res.status(200).json({ user: user._id });
+        res.json({ msg: 'Login Successfully', user: user._id });
     } catch (err) {
         const errors = signInErrors(err);
         res.status(200).json({ errors });
