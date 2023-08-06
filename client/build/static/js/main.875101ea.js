@@ -1,4 +1,4 @@
-/*! For license information please see main.d65d0673.js.LICENSE.txt */
+/*! For license information please see main.875101ea.js.LICENSE.txt */
 !(function () {
     var e = {
             4569: function (e, t, n) {
@@ -16700,11 +16700,13 @@
                                 data: { email: n, password: a },
                             })
                                 .then(function (e) {
-                                    e.data.errors
-                                        ? ((t.innerHTML = e.data.errors.email),
-                                          (r.innerHTML =
-                                              e.data.errors.password))
-                                        : (window.location = '/');
+                                    console.log(e.data),
+                                        e.data.errors
+                                            ? ((t.innerHTML =
+                                                  e.data.errors.email),
+                                              (r.innerHTML =
+                                                  e.data.errors.password))
+                                            : (window.location = '/');
                                 })
                                 .catch(function (e) {
                                     return console.log(e);
@@ -20242,4 +20244,4 @@
             );
         })();
 })();
-//# sourceMappingURL=main.d65d0673.js.map
+//# sourceMappingURL=main.875101ea.js.map
