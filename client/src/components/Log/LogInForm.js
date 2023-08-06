@@ -6,7 +6,9 @@ const LogInForm = () => {
     const [password, setPassword] = useState('');
 
     const handleLogin = (e) => {
+
         e.preventDefault();
+
         const emailError = document.querySelector('.email.error');
         const passwordError = document.querySelector('.password.error');
 
@@ -20,6 +22,7 @@ const LogInForm = () => {
             },
         })
             .then((res) => {
+                console.log(res.data)
                 if (res.data.errors) {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;

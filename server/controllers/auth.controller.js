@@ -29,20 +29,22 @@ module.exports.logIn = async (req, res) => {
         const user = await UserModel.login(email, password);
         const token = createToken(user._id);
 
-        res.cookie('jwt', token, {
-            httpOnly: true,
-            expires: maxAge,
-            secure: true,
-            sameSite: 'none',
-        });
-        res.json({ msg: 'Login Successfully', user: user._id });
+            res.cookie('jwt', token, {
+                httpOnly: true,
+                maxAge: maxAge,
+                secure: true,
+                sameSite: 'none',
+            });
+        res.status(200).json({ user: user._id });
+
     } catch (err) {
+        console.log(err)
         const errors = signInErrors(err);
         res.status(200).json({ errors });
     }
 };
 
 module.exports.logOut = async (req, res) => {
-    res.cookie('jwt', '', { maxAge: 1 });
+    res.clearCookie('jwt');
     res.redirect('/');
 };

@@ -35,6 +35,7 @@ module.exports.requireAuth = (req, res, next) => {
             async (err, decodedToken) => {
                 if (err) {
                     console.log(err)
+                    res.send(200).json('No Token')
                 } else {
                     console.log(decodedToken.id);
                     next();
@@ -42,7 +43,7 @@ module.exports.requireAuth = (req, res, next) => {
             }
         );
     } else {
-        console.log('No token');
+        console.log('No Token');
         next()
     };
 };
